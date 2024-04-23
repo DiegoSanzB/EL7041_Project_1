@@ -1,3 +1,9 @@
+# VSCODE
+.vscode/*
+
+# RESULTS
+results/*
+
 # Prerequisites
 *.d
 
