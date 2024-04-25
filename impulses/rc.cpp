@@ -93,7 +93,7 @@ CArray RC(double alpha, bool time = true){
     else {
         // Return the frequency domain pulse
         CArray RCArrayFFT (NFFT);
-        RCArrayFFT[std::slice(0, 2*fs*fs + 1, 1)] = RCArray;
+        RCArrayFFT[std::slice(0, (2*fs*fs + 1), 1)] = RCArray;
         fft(RCArrayFFT);
         // Center the pulse
         RCArrayFFT = RCArrayFFT.cshift((NFFT + 2*fs*fs + 1)/2);
