@@ -18,6 +18,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # FetchContent_MakeAvailable(fmt)
 
 add_executable(Project_1_EL7401 main.cpp 
+                src/ber.cpp
                 src/data_manager.cpp
                 src/eye_diagram.cpp
                 src/fft.cpp
