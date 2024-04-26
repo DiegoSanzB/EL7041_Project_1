@@ -54,6 +54,19 @@ CArray raised_cosine(float alpha, float fs, int NFFT)
 }
 
 
+float raised_cosine_t(float unit_time, float t, float alpha)
+{
+    float tau = t/unit_time;
+    if (abs(abs(alpha * tau) - 0.5) > pow(1, -5))
+    {
+        return sin(tau)/tau * cos(PI * alpha * tau) / (1 - pow(2*alpha*tau, 2));
+    } else
+    {
+        return sin(tau)/tau * PI * sin(PI * alpha * tau) / (8*alpha*tau);
+    }
+}
+
+
 CArray BTRC(float alpha)
 {
 

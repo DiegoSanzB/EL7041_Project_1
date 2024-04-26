@@ -6,6 +6,7 @@
 // PULSES
 CArray raised_cosine(float alpha);
 CArray raised_cosine(float alpha, float fs, int NFFT);
+float raised_cosine_t(float unit_time, float t, float alpha);
 
 CArray BTRC(float alpha, float beta);
 
