@@ -8,7 +8,7 @@ void results_folder_check()
     }
 }
 
-void write_to_file(CArray data, string filename)
+void write_to_file(valarray<double> data, string filename)
 {
     results_folder_check();
     ofstream output_file;
@@ -16,6 +16,6 @@ void write_to_file(CArray data, string filename)
 
     for (Complex element : data)
     {
-        output_file << element.real() << endl;
+        output_file << element << endl;
     }
 }

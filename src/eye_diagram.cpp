@@ -1,11 +1,11 @@
 #include "eye_diagram.hpp"
 
-CArray eye_diagram(size_t N, CArray &pulse, float fs)
+valarray<double> eye_diagram(size_t N, valarray<double> pulse, float fs)
 {
     valarray<int> am = random_bpsk(N);
     valarray<int> amU = bpsk_upsample(am, N, fs);
 
-    CArray out, am_upsampled_complex (N*fs);
+    valarray<double> out, am_upsampled_complex (N*fs);
 
     for (int i = 0; i < N*fs; i++)
     {
@@ -53,10 +53,10 @@ valarray<int> bpsk_upsample(valarray<int> &bpsk, size_t N, float fs)
 }
 
 
-CArray conv(CArray &a, CArray &b)
+valarray<double> conv(valarray<double> &a, valarray<double> &b)
 {
     size_t n = a.size(), m = b.size();
-    CArray r(n + m -1);
+    valarray<double> r(n + m -1);
 
     for (size_t i=0; i<r.size(); i++)
     {

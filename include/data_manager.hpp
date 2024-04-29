@@ -15,7 +15,7 @@ const filesystem::path mainFilePath = filesystem::current_path();
 const filesystem::path RESULTS_FOLDER_PATH = mainFilePath.parent_path() / "results";
 
 void results_folder_check();
-void write_to_file(CArray data, string filename);
+void write_to_file(valarray<double> data, string filename);
 
 #endif
 // -- END OF FILE -- //
