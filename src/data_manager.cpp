@@ -14,7 +14,7 @@ void write_to_file(valarray<double> data, string filename)
     ofstream output_file;
     output_file.open(RESULTS_FOLDER_PATH / filename);
 
-    for (Complex element : data)
+    for (double element : data)
     {
         output_file << element << endl;
     }
