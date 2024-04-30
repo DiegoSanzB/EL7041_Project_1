@@ -169,7 +169,7 @@ valarray<double> Pulse::get_array_fft(int factor, int fs, int NFFT)
     CArray pulse_array_fft(NFFT);
     pulse_array_fft = 0.0; // Fill with zeros
     pulse_array_fft[slice(0, arr_size, 1)] = pulse_array;
-    fft(pulse_array_fft);
+    fft_inplace(pulse_array_fft);
     // Center the pulse
     pulse_array_fft = pulse_array_fft.cshift(NFFT / 2);
     // Abs and normalize
