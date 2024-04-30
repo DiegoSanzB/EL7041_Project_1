@@ -12,46 +12,31 @@
 #define IMPULSES    
 
 using namespace std;
-
-// const double PI = 3.141592653589793238460;
 const double lim = 1e-10;
 
 typedef complex<double> Complex;
 typedef valarray<Complex> CArray;
 
-// PULSES
-// CArray raised_cosine(float alpha);
-// CArray raised_cosine(float alpha, float fs, int NFFT);
-
-// CArray BTRC(float alpha, float beta);
-
-// CArray IPLCP(float alpha, float mu, float epsilon, float gamma);
-// typedef valarray<Complex> CArray;
-// CArray ELP(float alpha, float beta);
-
+// PULSE SHAPES
 double RC(double tau, double alpha);
-// function<double(double, unordered_map<string, double>)> RC_function;
 inline function<double(double, unordered_map<string, double>)> RC_function = [](double tau, unordered_map<string, double> params) 
 {
     return RC(tau, params["alpha"]);
 };
 
 double BTRC(double tau, double alpha);
-// function<double(double, unordered_map<string, double>)> BTRC_function;
 inline function<double(double, unordered_map<string, double>)> BTRC_function = [](double tau, unordered_map<string, double> params)
 {
     return BTRC(tau, params["alpha"]);
 };
 
 double IPLCP(double tau, double alpha, double mu, double epsilon, double gamma);
-// function<double(double, unordered_map<string, double>)> IPLCP_function;
 inline function<double(double, unordered_map<string, double>)> IPLCP_function = [](double tau, unordered_map<string, double> params)
 {
     return IPLCP(tau, params["alpha"], params["mu"], params["epsilon"], params["gamma"]);
 };
 
 double ELP(double tau, double alpha, double betea);
-// function<double(double, unordered_map<string, double>)> EL_function;
 inline function<double(double, unordered_map<string, double>)> ELP_function = [](double tau, unordered_map<string, double> params)
 {
     return ELP(tau, params["alpha"], params["beta"]);
@@ -62,7 +47,7 @@ class Pulse {
         string pulse_type;
         function<double(double, unordered_map<string, double>)> pulse_function;
         unordered_map<string, double> pulse_params;
-        // valarray<complex<double>> pulse;
+        // valarray<complex<double>> pulse; // TODO: maybe store the computed pulse
     public:
         Pulse(function<double(double, unordered_map<string, double>)> pulse,
             unordered_map<string, double> pulse_params, 
