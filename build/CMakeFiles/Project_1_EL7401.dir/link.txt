@@ -1,1 +1,3 @@
-/usr/bin/g++ -g CMakeFiles/Project_1_EL7401.dir/main.cpp.o CMakeFiles/Project_1_EL7401.dir/src/data_manager.cpp.o CMakeFiles/Project_1_EL7401.dir/src/eye_diagram.cpp.o CMakeFiles/Project_1_EL7401.dir/src/fft.cpp.o CMakeFiles/Project_1_EL7401.dir/src/impulses/impulses.cpp.o -o Project_1_EL7401 
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\Project_1_EL7401.dir/objects.a
+C:\msys64\ucrt64\bin\ar.exe qc CMakeFiles\Project_1_EL7401.dir/objects.a @CMakeFiles\Project_1_EL7401.dir\objects1.rsp
+C:\msys64\ucrt64\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\Project_1_EL7401.dir/objects.a -Wl,--no-whole-archive -o Project_1_EL7401.exe -Wl,--out-implib,libProject_1_EL7401.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Project_1_EL7401.dir\linkLibs.rsp
