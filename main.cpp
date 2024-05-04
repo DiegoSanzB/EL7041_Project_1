@@ -28,6 +28,7 @@ int main() {
     vector<int> sir_db = {10, 20};
     int factor = 4, fs = 10, NFFT = 1024;
     int L = 2, nbits = pow(2, 10), M = 100;
+    int sir = 15;
     size_t N = 100000;
     // P1
     tuple<vector<valarray<double>>, vector<string>> P1_results = P1(pulses, params, names, alphas, factor, fs, NFFT);
@@ -52,9 +53,14 @@ int main() {
     // Save results to CSV
     write_to_csv(get<0>(P5_results), get<1>(P5_results), "P5_results.csv");
     // P6
-    // TODO
+    tuple<vector<valarray<double>>, vector<string>> P6_results = P6(pulses, params, names, alphas, fs, snr_db[1], sir, Ls[1], nbits, M);
+    // Save results to CSV
+    write_to_csv(get<0>(P6_results), get<1>(P6_results), "P6_results.csv");
+
     // P7
     vector<double> truncations = {5.0, 10.0};
+    vector<int> sir_db2 = {10};
+    vector<int> sir_db3 = {15};
     snr_db = {15};
     for (double truncation : truncations)
     {
@@ -66,13 +72,13 @@ int main() {
         // Save results to CSV
         write_to_csv(get<0>(P7a_results), get<1>(P7a_results), "P7a_results_truncation_" + truncation_ss.str() + ".csv");
         // P7b
-        sir_db = {10};
-        tuple<vector<valarray<double>>, vector<string>> P7b_results = P5(pulses, params, names, alphas, fs, snr_db[0], sir_db, Ls, nbits, M, truncation);
+        tuple<vector<valarray<double>>, vector<string>> P7b_results = P5(pulses, params, names, alphas, fs, snr_db[0], sir_db2, Ls, nbits, M, truncation);
         // Save results to CSV
         write_to_csv(get<0>(P7b_results), get<1>(P7b_results), "P7b_results_truncation_" + truncation_ss.str() + ".csv");
         // P7c
-        sir_db = {15};
-        // TODO
+        tuple<vector<valarray<double>>, vector<string>> P7c_results = P6(pulses, params, names, {alphas[0]}, fs, snr_db[0], sir_db3[0], Ls[1], nbits, M, truncation);
+        // Save results to CSV
+        write_to_csv(get<0>(P7c_results), get<1>(P7c_results), "P7c_results_truncation_" + truncation_ss.str() + ".csv");
     }
 
 }

@@ -190,27 +190,30 @@ tuple<vector<valarray<double>>, vector<string>> P5(vector<function<double(double
 // Outputs:
 // - vector of valarray<double> containing the BER values for offset values
 // - vector of strings containing the pulse names
-// tuple<vector<valarray<double>>, vector<string>> P6(vector<function<double(double, unordered_map<string, double>)>> pulses, vector<unordered_map<string, double>> params, vector<string> names, vector<double> alphas, int fs, int snr_db, int sir_db, int L, int nbits, int M, double truncation = numeric_limits<double>::infinity()){
-//     // Create an empty vector to store the results
-//     vector<valarray<double>> results;
-//     vector<string> pulse_names;
-//     for (int i = 0; i < pulses.size(); i++){
-//         for (int j = 0; j < alphas.size(); j++){
-//             // Include alpha in params
-//             params[i]["alpha"] = alphas[j];
-//             // Create a name for the pulse
-//             string pulse_name = names[i] + "_alpha_" + to_string(alphas[j]);
-//             pulse_names.push_back(pulse_name);
-//             // Create pulse object
-//             Pulse pulse(pulses[i], params[i], pulse_name);
-//             // Get BER values for ISI and CCI
-//             valarray<double> ber_isi_cci_result = ber_isi_cci(pulse, fs, snr_db, sir_db, L, nbits, M);
-//             // Store the results
-//             results.push_back(ber_isi_cci_result);
-//         }
-//     }
-//     return make_tuple(results, pulse_names);
-// }
+tuple<vector<valarray<double>>, vector<string>> P6(vector<function<double(double, unordered_map<string, double>)>> pulses, vector<unordered_map<string, double>> params, vector<string> names, vector<double> alphas, int fs, int snr_db, int sir_db, int L, int nbits, int M, double truncation){
+    // Create an empty vector to store the results
+    vector<valarray<double>> results;
+    vector<string> pulse_names;
+    for (int i = 0; i < pulses.size(); i++){
+        for (int j = 0; j < alphas.size(); j++){
+            // Create a string for alpha
+            stringstream ss_alpha;
+            ss_alpha << fixed << setprecision(2) << alphas[j];
+            // Include alpha in params
+            params[i]["alpha"] = alphas[j];
+            // Create a name for the pulse
+            string pulse_name = names[i] + "_alpha_" + ss_alpha.str();
+            pulse_names.push_back(pulse_name);
+            // Create pulse object
+            Pulse pulse(pulses[i], params[i], pulse_name);
+            // Get BER values for ISI and CCI
+            valarray<double> ber_isi_cci_result = ber_isi_cci(pulse, fs, snr_db, sir_db, L, nbits, M, truncation);
+            // Store the results
+            results.push_back(ber_isi_cci_result);
+        }
+    }
+    return make_tuple(results, pulse_names);
+}
 
 
 
