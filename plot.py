@@ -23,4 +23,4 @@ x = np.linspace(-1, 1, 2*fs)
 
 data_e_reshape = data_e.reshape((int((N-2*fs)/2), 2*fs))
 plt.plot(x, data_e_reshape.T, linewidth=.1, color='blue')
-plt.show()
+plt.savefig("ewe.png", dpi = 300)

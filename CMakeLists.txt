@@ -22,7 +22,8 @@ add_executable(Project_1_EL7401 main.cpp
                 src/data_manager.cpp
                 src/eye_diagram.cpp
                 src/fft.cpp
-                src/impulses/impulses.cpp)
+                src/impulses.cpp
+                src/questions.cpp)
 # target_link_libraries(Project_1_EL7401 PRIVATE fmt::fmt)
 
 target_include_directories(Project_1_EL7401 PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)

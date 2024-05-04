@@ -1,27 +1,4 @@
-#include "impulses/impulses.hpp"
-
-
-// void fft(CArray& x)
-// {
-//     const size_t N = x.size();
-//     if (N <= 1) return;
-
-//     // divide
-//     CArray even = x[slice(0, N/2, 2)];
-//     CArray  odd = x[slice(1, N/2, 2)];
-
-//     // conquer
-//     fft(even);
-//     fft(odd);
-
-//     // combine
-//     for (size_t k = 0; k < N/2; ++k)
-//     {
-//         Complex t = polar(1.0, -2 * PI * k / N) * odd[k];
-//         x[k    ] = even[k] + t;
-//         x[k+N/2] = even[k] - t;
-//     }
-// }
+#include "impulses.hpp"
 
 // PULSES
 // Raised Cosine
@@ -34,13 +11,6 @@ double RC(double tau, double alpha) {
     double cosine = (abs(cosDen) > lim) ? cos(alpha * PI * tau) / cosDen : 1.0;
     return sinc * cosine;
 }
-
-// Wrap it into a function RC_function
-// function<double(double, unordered_map<string, double>)> RC_function = [](double tau, unordered_map<string, double> params) 
-// {
-//     return RC(tau, params["alpha"]);
-// };
-
 
 // Better than Raised Cosine Pulse (BTRC)
 double BTRC(double tau, double alpha){
@@ -55,12 +25,6 @@ double BTRC(double tau, double alpha){
     double right = (abs(right_Den) > lim) ? right_Num / right_Den : 1.0;
     return sinc * right;
 }
-
-// Wrap it into a function BTRC_function
-// inline function<double(double, unordered_map<string, double>)> BTRC_function = [](double tau, unordered_map<string, double> params) {
-//         return BTRC(tau, params["alpha"]);
-//     };
-
 
 // Improved Parametric Linear Combination Pulse (IPLCP)
 double IPLCP(double tau, double alpha, double mu, double epsilon, double gamma){
@@ -77,13 +41,6 @@ double IPLCP(double tau, double alpha, double mu, double epsilon, double gamma){
     return ans;
 }
 
-
-// Wrap it into a function IPLCP_function
-// function<double(double, unordered_map<string, double>)> IPLCP_function = [](double tau, unordered_map<string, double> params) {
-//         return IPLCP(tau, params["alpha"], params["mu"], params["epsilon"], params["gamma"]);
-//     };
-
-
 // Exponential Linear Pulse (ELP)
 double ELP(double tau, double alpha, double beta){
     // exp section
@@ -98,23 +55,6 @@ double ELP(double tau, double alpha, double beta){
 }
 
 
-// Wrap it into a function ELP_function
-// function<double(double, unordered_map<string, double>)> ELP_function = [](double tau, unordered_map<string, double> params) {
-//         return ELP(tau, params["alpha"], params["beta"]);
-//     };
-
-
-// Shared class for pulses
-// class Pulse {
-// private:
-//     string pulse_type;
-//     function<double(double, unordered_map<string, double>)> pulse_function;
-//     unordered_map<string, double> pulse_params;
-
-// public:
-    // Pulse class definition
-    
-
 // Pulse id
 string Pulse::get_pulse_type()
 {
@@ -122,10 +62,19 @@ string Pulse::get_pulse_type()
 }
 
 // Pulse evaluation in time domain
-double Pulse::evaluate(double tau)
-{
+double Pulse::evaluate(double tau, double truncation){
+    if (abs(tau) > truncation) {
+        return 0.0;
+    }
     return pulse_function(tau, pulse_params);
 }
+
+// double Pulse::evaluate_truncated(double tau, double truncation){
+//     if (abs(tau) > truncation) {
+//         return 0.0;
+//     }
+//     return evaluate(tau);
+// }
 
 // Pulse array in time domain (say it's size in x*tau times, both sides)
 valarray<double> Pulse::get_array(int factor, int fs)
@@ -137,11 +86,11 @@ valarray<double> Pulse::get_array(int factor, int fs)
     valarray<double> pulse_array(0.0, arr_size);
     // Fill time array
     for (int i = 0; i < arr_size; i++) {
-        tau_array[i] = -factor + i / static_cast<double>(fs);   // TODO: check if the time domain is correct
+        tau_array[i] = -(factor) + i / static_cast<double>(fs);   // TODO: check if the time domain is correct
     }
     // Now evaluate the pulse at each time
     for (int i = 0; i < arr_size; i++) {
-        pulse_array[i] = evaluate(tau_array[i]);
+        pulse_array[i] = evaluate(tau_array[i], numeric_limits<double>::infinity());
     }
     return pulse_array;
 }
@@ -159,11 +108,11 @@ valarray<double> Pulse::get_array_fft(int factor, int fs, int NFFT)
     CArray pulse_array(0.0, arr_size);
     // Fill time array
     for (int i = 0; i < arr_size; i++) {
-        tau_array[i] = -fs + i / static_cast<double>(fs);
+        tau_array[i] = -(factor) + i / static_cast<double>(fs);
     }
     // Now evaluate the pulse at each time
     for (int i = 0; i < arr_size; i++) {
-        pulse_array[i] = evaluate(tau_array[i]);
+        pulse_array[i] = evaluate(tau_array[i], numeric_limits<double>::infinity());
     }
     // Now do the FFT
     CArray pulse_array_fft(NFFT);
@@ -181,23 +130,3 @@ valarray<double> Pulse::get_array_fft(int factor, int fs, int NFFT)
     }
     return ans;
 }
-// };
-
-// int main() {
-//     // Define the pulse
-//     Pulse pulse(RC_function, {{"alpha", 0.35}}, "RC");
-//     // CArray pulse_array = pulse.get_array();
-//     // // print the pulse array
-//     // for (int i = 0; i < pulse_array.size(); i++) {
-//     //     cout << pulse_array[i].real() << ',';
-//     // }
-//     // Print the fft
-//     valarray<double> pulse_array_fft = pulse.get_array_fft();
-//     for (int i = 0; i < pulse_array_fft.size(); i++) {
-//         cout << pulse_array_fft[i] << ',';
-//     }
-
-//     cout << endl;
-//     return 0;
-// }
-

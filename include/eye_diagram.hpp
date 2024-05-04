@@ -1,7 +1,7 @@
 #include <random>
 
 #include "fft.hpp"
-#include "impulses/impulses.hpp"
+#include "impulses.hpp"
 
 // TODO: change pulse to Pulse class maybe
 valarray<double> eye_diagram(size_t N, valarray<double> pulse, float fs);

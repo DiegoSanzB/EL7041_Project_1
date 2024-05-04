@@ -13,8 +13,8 @@ void fft_inplace(CArray& x)
     CArray  odd = x[std::slice(1, N/2, 2)];
 
     // conquer
-    fft(even);
-    fft(odd);
+    fft_inplace(even);
+    fft_inplace(odd);
 
     // combine
     for (size_t k = 0; k < N/2; ++k)

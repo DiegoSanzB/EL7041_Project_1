@@ -1,10 +1,10 @@
 #include "ber.hpp"
 
-valarray<double> ber_isi(Pulse pulse, double fs, double snr, int nbits, int M)
+valarray<double> ber_isi(Pulse pulse, double fs, double snr, int nbits, int M, double truncation = numeric_limits<double>::infinity())
 {
     int N = floor(nbits/2);
     double snr_coefficient = pow(10, snr/20.0);
-    double omega = 1 / fs;
+    double omega = 1.0 / fs;
 
     valarray<double> nbits_linspace (nbits), p_isi (OFFSETS.size());
 
@@ -21,14 +21,14 @@ valarray<double> ber_isi(Pulse pulse, double fs, double snr, int nbits, int M)
     }
     for (int c = 0; c<OFFSETS.size(); c++)
     {
-        double g0 = snr_coefficient*pulse.evaluate(OFFSETS[c]*time_unit_period);
+        double g0 = snr_coefficient*pulse.evaluate(OFFSETS[c]*time_unit_period, truncation*fs);
         valarray<double> gk (nbits);
 
         // Calculate values for gk
         for (int i=0; i<nbits; i++)
         {
             double pm_one = ((int)rand() % 2)*2 - 1;
-            gk[i] = pm_one * snr_coefficient * pulse.evaluate((OFFSETS[c] - nbits_linspace[i])*time_unit_period);
+            gk[i] = pm_one * snr_coefficient * pulse.evaluate((OFFSETS[c] - nbits_linspace[i])*time_unit_period, truncation*fs);
         }
         // Calculate the sum and product
         double sum = 0.0, mult = 1.0;
@@ -47,7 +47,7 @@ valarray<double> ber_isi(Pulse pulse, double fs, double snr, int nbits, int M)
 }
 
 
-valarray<double> ber_cci(Pulse pulse, double fs, double snr, double sir, int L, int nbits, int M)
+valarray<double> ber_cci(Pulse pulse, double fs, double snr, double sir, int L, int nbits, int M, double truncation = numeric_limits<double>::infinity())
 {
     int N = floor(nbits/2);
     double snr_coefficient = pow(10, snr/20.0);
@@ -69,7 +69,7 @@ valarray<double> ber_cci(Pulse pulse, double fs, double snr, double sir, int L, 
     }
     for (int c = 0; c<OFFSETS.size(); c++)
     {
-        double g0 = snr_coefficient*pulse.evaluate(OFFSETS[c]*time_unit_period);
+        double g0 = snr_coefficient*pulse.evaluate(OFFSETS[c]*time_unit_period, truncation*fs);
 
         // Calculate r_i assuming each co-channel has same power
         double r_i = sqrt(g0*g0/(L*sir_coefficient));   // TODO: coefficient seems off given P_CCI values in paper
@@ -91,9 +91,9 @@ valarray<double> ber_cci(Pulse pulse, double fs, double snr, double sir, int L, 
 }
 
 
-valarray<double> ber_isi_cci(Pulse pulse, double fs, double snr, double sir, int L, int nbits, int M)
-{
-    // TODO: implement isi + cci
-}
+// valarray<double> ber_isi_cci(Pulse pulse, double fs, double snr, double sir, int L, int nbits, int M)
+// {
+//     // TODO: implement isi + cci
+// }
 
 // -- END OF FILE -- //

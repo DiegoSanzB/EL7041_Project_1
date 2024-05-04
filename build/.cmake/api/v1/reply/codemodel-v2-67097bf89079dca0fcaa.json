@@ -6,7 +6,7 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.25.0"
@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Project_1_EL7401::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Project_1_EL7401-Debug-9946165271e224c0b198.json",
+					"jsonFile" : "target-Project_1_EL7401-Debug-2ecc53cd1647beb76a96.json",
 					"name" : "Project_1_EL7401",
 					"projectIndex" : 0
 				}
@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/diego/OneDrive/Escritorio/EL7401_Project_1/build",
-		"source" : "C:/Users/diego/OneDrive/Escritorio/EL7401_Project_1"
+		"build" : "/home/borjo/EL7401_Project_1/build",
+		"source" : "/home/borjo/EL7401_Project_1"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 7
+		"minor" : 4
 	}
 }

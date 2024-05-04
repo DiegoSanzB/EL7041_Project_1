@@ -54,7 +54,8 @@ class Pulse {
             string pulse_type)
             : pulse_function(pulse), pulse_params(pulse_params), pulse_type(pulse_type) {}
         string get_pulse_type();
-        double evaluate(double);
+        double evaluate(double, double);
+        // double evaluate_truncated(double, double);
         valarray<double> get_array(int factor = 10, int fs = 10);
         valarray<double> get_array_fft(int factor = 10, int fs = 10, int NFFT = 1024);
 };

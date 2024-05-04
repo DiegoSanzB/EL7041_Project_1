@@ -1,21 +1,49 @@
 #include "data_manager.hpp"
 
-void results_folder_check()
-{
-    if (!filesystem::exists(RESULTS_FOLDER_PATH))
-    {
-        filesystem::create_directories(RESULTS_FOLDER_PATH);
+
+void write_to_csv(const vector<valarray<double>>& data, const vector<string>& column_names, string CSV_FILENAME = "results.csv") {
+    string csv_file_path = RESULTS_FOLDER_PATH + "/" + CSV_FILENAME;
+    ofstream output_file(csv_file_path);
+
+    if (!output_file.is_open()) {
+        cerr << "Error: Unable to open CSV file." << endl;
+        return;
     }
+
+    // Write headers
+    for (const string& column_name : column_names) {
+        output_file << column_name << ",";
+    }
+    output_file << endl;
+
+    // Write data
+    size_t num_rows = data[0].size();
+    for (size_t i = 0; i < num_rows; ++i) {
+        for (size_t j = 0; j < data.size(); ++j) {
+            output_file << data[j][i] << ",";
+        }
+        output_file << endl;
+    }
+
+    output_file.close();
 }
 
-void write_to_file(valarray<double> data, string filename)
-{
-    results_folder_check();
-    ofstream output_file;
-    output_file.open(RESULTS_FOLDER_PATH / filename);
+// void results_folder_check()
+// {
+//     if (!filesystem::exists(RESULTS_FOLDER_PATH))
+//     {
+//         filesystem::create_directories(RESULTS_FOLDER_PATH);
+//     }
+// }
 
-    for (double element : data)
-    {
-        output_file << element << endl;
-    }
-}
+// void write_to_file(valarray<double> data, string filename)
+// {
+//     results_folder_check();
+//     ofstream output_file;
+//     output_file.open(RESULTS_FOLDER_PATH / filename);
+
+//     for (double element : data)
+//     {
+//         output_file << element << endl;
+//     }
+// }

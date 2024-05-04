@@ -2,10 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "Project_1_EL7401.exe"
-		},
-		{
-			"path" : "Project_1_EL7401.pdb"
+			"path" : "Project_1_EL7401"
 		}
 	],
 	"backtrace" : 1,
@@ -34,7 +31,7 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 28,
+				"line" : 29,
 				"parent" : 0
 			}
 		]
@@ -45,14 +42,17 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -std=gnu++23"
+					"fragment" : "-g"
+				},
+				{
+					"fragment" : "-std=gnu++23"
 				}
 			],
 			"includes" : 
 			[
 				{
 					"backtrace" : 2,
-					"path" : "C:/Users/diego/OneDrive/Escritorio/EL7401_Project_1/include"
+					"path" : "/home/borjo/EL7401_Project_1/include"
 				}
 			],
 			"language" : "CXX",
@@ -71,7 +71,8 @@
 				2,
 				3,
 				4,
-				5
+				5,
+				6
 			]
 		}
 	],
@@ -87,16 +88,12 @@
 			{
 				"fragment" : "",
 				"role" : "flags"
-			},
-			{
-				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
-				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
 	"name" : "Project_1_EL7401",
-	"nameOnDisk" : "Project_1_EL7401.exe",
+	"nameOnDisk" : "Project_1_EL7401",
 	"paths" : 
 	{
 		"build" : ".",
@@ -113,7 +110,8 @@
 				2,
 				3,
 				4,
-				5
+				5,
+				6
 			]
 		}
 	],
@@ -152,7 +150,13 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/impulses/impulses.cpp",
+			"path" : "src/impulses.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/questions.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],
