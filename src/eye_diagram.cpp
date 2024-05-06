@@ -64,7 +64,7 @@ valarray<double> conv(valarray<double> &a, valarray<double> &b)
         size_t s = (i+2-m > 0) ? i+2-m : 0;
         for (size_t j=s; j < min(n, i+2); j++)
         {
-            r[i] += a[j] * b[i-j+1];
+            r[i] += a[j] * b[m - (i-j) - 1];
         }
     }
     return r;
