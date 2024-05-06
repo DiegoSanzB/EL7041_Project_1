@@ -12,9 +12,10 @@
 // - vector of valarray<double> containing the pulses in time domain and frequency domain
 // - vector of strings containing the pulse names
 // Note: in I give n pulses, I should have n*len(alphas)*2*(valarray<double>) in the output
-tuple<vector<valarray<double>>, vector<string>> P1(vector<function<double(double, unordered_map<string, double>)>> pulses, vector<unordered_map<string, double>> params, vector<string> names, vector<double> alphas, int factor, int fs, int NFFT){
+tuple<vector<valarray<double>>, vector<valarray<double>>, vector<string>> P1(vector<function<double(double, unordered_map<string, double>)>> pulses, vector<unordered_map<string, double>> params, vector<string> names, vector<double> alphas, int factor, int fs, int NFFT){
     // Create an empty vector to store the results
-    vector<valarray<double>> results;
+    vector<valarray<double>> time_results;
+    vector<valarray<double>> freq_results;
     vector<string> pulse_names;
     for (int i = 0; i < pulses.size(); i++){
         for (int j = 0; j < alphas.size(); j++){
@@ -26,8 +27,6 @@ tuple<vector<valarray<double>>, vector<string>> P1(vector<function<double(double
             // Create a name for the pulse
             string pulse_name = names[i] + "_alpha_" + ss.str();
             pulse_names.push_back(pulse_name);
-            // add same name + frequency
-            pulse_names.push_back(pulse_name + "_freq");
             // Create pulse object
             Pulse pulse(pulses[i], params[i], pulse_name);
             // Get pulse array in time domain
@@ -35,11 +34,11 @@ tuple<vector<valarray<double>>, vector<string>> P1(vector<function<double(double
             // Get pulse array in frequency domain
             valarray<double> pulse_freq = pulse.get_array_fft(factor, fs, NFFT);
             // Store the results
-            results.push_back(pulse_time);
-            results.push_back(pulse_freq);
+            time_results.push_back(pulse_time);
+            freq_results.push_back(pulse_freq);
         } 
     }
-    return make_tuple(results, pulse_names);
+    return make_tuple(time_results, freq_results, pulse_names);
 }
 
 // P2 - Plot eye diagram for the pulses and a fixed alpha value

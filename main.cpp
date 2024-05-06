@@ -26,14 +26,15 @@ int main() {
     vector<int> Ls = {2, 6};
     vector<int> snr_db = {10, 15};
     vector<int> sir_db = {10, 20};
-    int factor = 4, fs = 10, NFFT = 1024;
+    int factor = 30, fs = 10, NFFT = pow(2, 14);
     int L = 2, nbits = pow(2, 10), M = 100;
     int sir = 15;
     size_t N = 100000;
     // P1
-    tuple<vector<valarray<double>>, vector<string>> P1_results = P1(pulses, params, names, alphas, factor, fs, NFFT);
+    tuple<vector<valarray<double>>, vector<valarray<double>>, vector<string>> P1_results = P1(pulses, params, names, alphas, factor, fs, NFFT);
     // Save results to CSV
-    write_to_csv(get<0>(P1_results), get<1>(P1_results), "P1_results.csv");
+    write_to_csv(get<0>(P1_results), get<2>(P1_results), "P1_time_results.csv");
+    write_to_csv(get<1>(P1_results), get<2>(P1_results), "P1_freq_results.csv");
     // P2
     tuple<vector<valarray<double>>, vector<string>, vector<double>> P2_results = P2(pulses, params, names, alphas[0], N, fs, factor);
     // Save results to CSV

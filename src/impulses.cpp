@@ -35,7 +35,7 @@ double IPLCP(double tau, double alpha, double mu, double epsilon, double gamma){
     double sinc = (abs(sincDen) > lim) ? sin(PI * tau) / sincDen : 1.0;
     // Section inside of a parenthesis
     double insideDen = pow((PI * alpha * tau), 2.0);
-    double insideNum = (4.0 * (1.0 - mu) * sin(PI * alpha * tau * 0.5)) + (PI *  alpha * mu * tau * sin(PI * alpha * tau));
+    double insideNum = (4.0 * (1.0 - mu) * pow(sin(PI * alpha * tau * 0.5), 2.0)) + (PI *  alpha * mu * tau * sin(PI * alpha * tau));
     double inside = (abs(insideDen) > lim) ? insideNum / insideDen : 1.0;
     double ans = exp * (pow((sinc * inside), gamma));
     return ans;
@@ -69,12 +69,6 @@ double Pulse::evaluate(double tau, double truncation){
     return pulse_function(tau, pulse_params);
 }
 
-// double Pulse::evaluate_truncated(double tau, double truncation){
-//     if (abs(tau) > truncation) {
-//         return 0.0;
-//     }
-//     return evaluate(tau);
-// }
 
 // Pulse array in time domain (say it's size in x*tau times, both sides)
 valarray<double> Pulse::get_array(int factor, int fs)
@@ -96,7 +90,6 @@ valarray<double> Pulse::get_array(int factor, int fs)
 }
 
 // Pulse array in frequency domain
-// #TODO: what if the input is the time domain pulse?
 valarray<double> Pulse::get_array_fft(int factor, int fs, int NFFT)
 {
     // Determine array size needed
