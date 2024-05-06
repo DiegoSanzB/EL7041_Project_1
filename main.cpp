@@ -26,7 +26,7 @@ int main() {
     vector<int> Ls = {2, 6};
     vector<int> snr_db = {10, 15};
     vector<int> sir_db = {10, 20};
-    int factor = 30, fs = 10, NFFT = pow(2, 14);
+    int factor = 30, fs = 20, NFFT = pow(2, 14);
     int L = 2, nbits = pow(2, 10), M = 100;
     int sir = 15;
     size_t N = 100000;

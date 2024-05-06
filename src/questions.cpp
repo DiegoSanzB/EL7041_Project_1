@@ -59,11 +59,14 @@ tuple<vector<valarray<double>>, vector<string>, vector<double>> P2(vector<functi
     vector<valarray<double>> results;
     vector<string> pulse_names;
     vector<double> max_distortions;
+    // create a string alpha with specific precision
+    stringstream ss;
+    ss << fixed << setprecision(2) << alpha;
     for (int i = 0; i < pulses.size(); i++){
         // Include alpha in params
         params[i]["alpha"] = alpha;
         // Create a name for the pulse
-        string pulse_name = names[i] + "_alpha_" + to_string(alpha);
+        string pulse_name = names[i] + "_alpha_" + ss.str();
         pulse_names.push_back(pulse_name);
         // Create pulse object
         Pulse pulse(pulses[i], params[i], pulse_name);

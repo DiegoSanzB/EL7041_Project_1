@@ -32,7 +32,7 @@ valarray<double> ber_isi(Pulse pulse, double fs, double snr, int nbits, int M, d
         }
         // Calculate the sum and product
         double sum = 0.0, mult = 1.0;
-        for (double m=1.0; m<=M; m += 2.0)
+        for (double m = 1.0; m <= M; m += 2.0)
         {
             for (int k=0; k<nbits; k++) // gk.size() == nbits
             {
