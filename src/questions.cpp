@@ -99,7 +99,7 @@ tuple<vector<valarray<double>>, vector<string>, vector<double>> P2(vector<functi
 // Outputs:
 // - vector of valarray<double> containing the BER values for offset values
 // - vector of strings containing the pulse names
-tuple<vector<valarray<double>>, vector<string>> P4(vector<function<double(double, unordered_map<string, double>)>> pulses, vector<unordered_map<string, double>> params, vector<string> names, vector<double> alphas, int fs, vector<int> snr_db, int nbits, int M, double truncation){
+tuple<vector<valarray<double>>, vector<string>> P4(vector<function<double(double, unordered_map<string, double>)>> pulses, vector<unordered_map<string, double>> params, vector<string> names, vector<double> alphas, double omega, vector<int> snr_db, int nbits, int M, double truncation){
     // Create an empty vector to store the results
     vector<valarray<double>> results;
     vector<string> pulse_names;
@@ -120,7 +120,7 @@ tuple<vector<valarray<double>>, vector<string>> P4(vector<function<double(double
                 // Create pulse object
                 Pulse pulse(pulses[i], params[i], pulse_name);
                 // Get BER values for ISI
-                valarray<double> ber_isi_result = ber_isi(pulse, fs, snr_db[k], nbits, M, truncation);
+                valarray<double> ber_isi_result = ber_isi(pulse, omega, snr_db[k], nbits, M, truncation);
                 // Store the results
                 results.push_back(ber_isi_result);
             }
@@ -144,7 +144,7 @@ tuple<vector<valarray<double>>, vector<string>> P4(vector<function<double(double
 // Outputs:
 // - vector of valarray<double> containing the BER values for offset values
 // - vector of strings containing the pulse names
-tuple<vector<valarray<double>>, vector<string>> P5(vector<function<double(double, unordered_map<string, double>)>> pulses, vector<unordered_map<string, double>> params, vector<string> names, vector<double> alphas, int fs, int snr_db, vector<int> sir_db, vector<int> L, int nbits, int M, double truncation){
+tuple<vector<valarray<double>>, vector<string>> P5(vector<function<double(double, unordered_map<string, double>)>> pulses, vector<unordered_map<string, double>> params, vector<string> names, vector<double> alphas, double omega, int snr_db, vector<int> sir_db, vector<int> L, int nbits, int M, double truncation){
     // Create an empty vector to store the results
     vector<valarray<double>> results;
     vector<string> pulse_names;
@@ -166,7 +166,7 @@ tuple<vector<valarray<double>>, vector<string>> P5(vector<function<double(double
                     // Create pulse object
                     Pulse pulse(pulses[i], params[i], pulse_name);
                     // Get BER values for CCI
-                    valarray<double> ber_cci_result = ber_cci(pulse, fs, snr_db, sir_db[k], L[l], nbits, M, truncation);
+                    valarray<double> ber_cci_result = ber_cci(pulse, omega, snr_db, sir_db[k], L[l], nbits, M, truncation);
                     // Store the results
                     results.push_back(ber_cci_result);
                 }
@@ -175,7 +175,6 @@ tuple<vector<valarray<double>>, vector<string>> P5(vector<function<double(double
     }
     return make_tuple(results, pulse_names);
 }
-
 
 // P6 - Plot BER for ISI and CCI for the pulses with multiple alpha values, fixed L value, SNR and SIR values
 // Inputs:
@@ -192,7 +191,7 @@ tuple<vector<valarray<double>>, vector<string>> P5(vector<function<double(double
 // Outputs:
 // - vector of valarray<double> containing the BER values for offset values
 // - vector of strings containing the pulse names
-tuple<vector<valarray<double>>, vector<string>> P6(vector<function<double(double, unordered_map<string, double>)>> pulses, vector<unordered_map<string, double>> params, vector<string> names, vector<double> alphas, int fs, int snr_db, int sir_db, int L, int nbits, int M, double truncation){
+tuple<vector<valarray<double>>, vector<string>> P6(vector<function<double(double, unordered_map<string, double>)>> pulses, vector<unordered_map<string, double>> params, vector<string> names, vector<double> alphas,  double omega, int snr_db, int sir_db, int L, int nbits, int M, double truncation){
     // Create an empty vector to store the results
     vector<valarray<double>> results;
     vector<string> pulse_names;
@@ -209,7 +208,7 @@ tuple<vector<valarray<double>>, vector<string>> P6(vector<function<double(double
             // Create pulse object
             Pulse pulse(pulses[i], params[i], pulse_name);
             // Get BER values for ISI and CCI
-            valarray<double> ber_isi_cci_result = ber_isi_cci(pulse, fs, snr_db, sir_db, L, nbits, M, truncation);
+            valarray<double> ber_isi_cci_result = ber_isi_cci(pulse, omega, snr_db, sir_db, L, nbits, M, truncation);
             // Store the results
             results.push_back(ber_isi_cci_result);
         }
