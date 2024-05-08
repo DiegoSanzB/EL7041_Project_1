@@ -5,8 +5,11 @@
 results/*
 plots/*
 
-# BUILD .cmake
+# cmake
 build/.cmake/*
+build/CMakeCache.txt
+build/compile_commands.json
+build/cmake_install.cmake
 
 # Prerequisites
 *.d
