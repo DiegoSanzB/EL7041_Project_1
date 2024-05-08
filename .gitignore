@@ -5,6 +5,9 @@
 results/*
 plots/*
 
+# BUILD .cmake
+build/.camke/*
+
 # Prerequisites
 *.d
 
