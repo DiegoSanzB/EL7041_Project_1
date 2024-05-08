@@ -42,7 +42,8 @@ inline function<double(double, unordered_map<string, double>)> ELP_function = []
     return ELP(tau, params["alpha"], params["beta"]);
 };
 
-class Pulse {
+class Pulse
+{
     private:
         string pulse_type;
         function<double(double, unordered_map<string, double>)> pulse_function;

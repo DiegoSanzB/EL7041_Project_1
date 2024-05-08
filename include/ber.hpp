@@ -2,7 +2,6 @@
 #include <valarray>
 #include <random>
 
-#include "fft.hpp"
 #include "impulses.hpp"
 
 const int time_unit_period = 1;

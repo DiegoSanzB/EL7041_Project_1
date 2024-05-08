@@ -91,7 +91,7 @@ tuple<vector<valarray<double>>, vector<string>, vector<double>> P2(vector<functi
 // - params: vector of pulse parameters for each pulse
 // - names: vector of pulse names
 // - alphas: vector of alpha values
-// - fs: sampling frequency
+// - omega: angular frequency
 // - snr_db:  vector of SNR values in dB
 // - nbits: number of bits
 // - M: not sure ask uwu
@@ -134,7 +134,7 @@ tuple<vector<valarray<double>>, vector<string>> P4(vector<function<double(double
 // - params: vector of pulse parameters for each pulse
 // - names: vector of pulse names
 // - alphas: vector of alpha values
-// - fs: sampling frequency
+// - omega: angular frequency
 // - snr_db:  snr value in dB
 // - sir_db: vector of SIR values in dB
 // - L: vector of L values
@@ -182,7 +182,7 @@ tuple<vector<valarray<double>>, vector<string>> P5(vector<function<double(double
 // - params: vector of pulse parameters for each pulse
 // - names: vector of pulse names
 // - alphas: vector of alpha values
-// - fs: sampling frequency
+// - omega: angular frequency
 // - snr_db:  SNR value in dB
 // - sir_db: SIR value in dB
 // - L: fixed L value

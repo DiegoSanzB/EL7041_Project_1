@@ -71,7 +71,7 @@ valarray<double> ber_cci(Pulse pulse, double omega, double snr, double sir, int 
         double g0 = snr_coefficient*pulse.evaluate(OFFSETS[c]*time_unit_period, truncation*time_unit_period);
 
         // Calculate r_i assuming each co-channel has same power
-        double r_i = sqrt(g0*g0/(L*sir_coefficient));   // TODO: coefficient seems off given P_CCI values in paper
+        double r_i = sqrt(g0*g0/(L*sir_coefficient));
 
         // Calculate the sum and product
         double sum = 0.0, mult = 1.0;

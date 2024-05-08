@@ -2,7 +2,8 @@
 
 // PULSES
 // Raised Cosine
-double RC(double tau, double alpha) {
+double RC(double tau, double alpha)
+{
     // Sinc
     double sincDen = PI * tau;
     double sinc = (abs(sincDen) > lim) ? sin(PI * tau) / sincDen : 1.0;
@@ -12,8 +13,10 @@ double RC(double tau, double alpha) {
     return sinc * cosine;
 }
 
+
 // Better than Raised Cosine Pulse (BTRC)
-double BTRC(double tau, double alpha){
+double BTRC(double tau, double alpha)
+{
     // constants
     double beta = (PI * alpha)/log(2.0);
     // Sinc
@@ -26,8 +29,10 @@ double BTRC(double tau, double alpha){
     return sinc * right;
 }
 
+
 // Improved Parametric Linear Combination Pulse (IPLCP)
-double IPLCP(double tau, double alpha, double mu, double epsilon, double gamma){
+double IPLCP(double tau, double alpha, double mu, double epsilon, double gamma)
+{
     // exp section
     double exp = std::exp((-1.0 * epsilon) * pow((PI * tau), 2.0));
     // Sinc
@@ -41,8 +46,10 @@ double IPLCP(double tau, double alpha, double mu, double epsilon, double gamma){
     return ans;
 }
 
+
 // Exponential Linear Pulse (ELP)
-double ELP(double tau, double alpha, double beta){
+double ELP(double tau, double alpha, double beta)
+{
     // exp section
     double exp = std::exp((-1.0 * PI) * (0.5 * beta) * pow(tau, 2.0));
     // Right sinc
@@ -61,8 +68,10 @@ string Pulse::get_pulse_type()
     return pulse_type;
 }
 
+
 // Pulse evaluation in time domain
-double Pulse::evaluate(double tau, double truncation){
+double Pulse::evaluate(double tau, double truncation)
+{
     if (abs(tau) > truncation) {
         return 0.0;
     }
@@ -123,3 +132,5 @@ valarray<double> Pulse::get_array_fft(int factor, int fs, int NFFT)
     }
     return ans;
 }
+
+// -- END OF FILE -- //
