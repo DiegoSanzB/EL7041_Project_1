@@ -1,37 +1,44 @@
 [
 {
-  "directory": "/home/borjo/EL7401_Project_1/build",
-  "command": "/usr/bin/g++  -I/home/borjo/EL7401_Project_1/include -g -std=gnu++23 -o CMakeFiles/Project_1_EL7401.dir/main.cpp.o -c /home/borjo/EL7401_Project_1/main.cpp",
-  "file": "/home/borjo/EL7401_Project_1/main.cpp"
+  "directory": "C:/Users/diego/OneDrive/Escritorio/EL7401_Project_1/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/Project_1_EL7401.dir/includes_CXX.rsp -g -std=gnu++23 -o CMakeFiles\\Project_1_EL7401.dir\\main.cpp.obj -c C:\\Users\\diego\\OneDrive\\Escritorio\\EL7401_Project_1\\main.cpp",
+  "file": "C:/Users/diego/OneDrive/Escritorio/EL7401_Project_1/main.cpp",
+  "output": "CMakeFiles/Project_1_EL7401.dir/main.cpp.obj"
 },
 {
-  "directory": "/home/borjo/EL7401_Project_1/build",
-  "command": "/usr/bin/g++  -I/home/borjo/EL7401_Project_1/include -g -std=gnu++23 -o CMakeFiles/Project_1_EL7401.dir/src/ber.cpp.o -c /home/borjo/EL7401_Project_1/src/ber.cpp",
-  "file": "/home/borjo/EL7401_Project_1/src/ber.cpp"
+  "directory": "C:/Users/diego/OneDrive/Escritorio/EL7401_Project_1/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/Project_1_EL7401.dir/includes_CXX.rsp -g -std=gnu++23 -o CMakeFiles\\Project_1_EL7401.dir\\src\\ber.cpp.obj -c C:\\Users\\diego\\OneDrive\\Escritorio\\EL7401_Project_1\\src\\ber.cpp",
+  "file": "C:/Users/diego/OneDrive/Escritorio/EL7401_Project_1/src/ber.cpp",
+  "output": "CMakeFiles/Project_1_EL7401.dir/src/ber.cpp.obj"
 },
 {
-  "directory": "/home/borjo/EL7401_Project_1/build",
-  "command": "/usr/bin/g++  -I/home/borjo/EL7401_Project_1/include -g -std=gnu++23 -o CMakeFiles/Project_1_EL7401.dir/src/data_manager.cpp.o -c /home/borjo/EL7401_Project_1/src/data_manager.cpp",
-  "file": "/home/borjo/EL7401_Project_1/src/data_manager.cpp"
+  "directory": "C:/Users/diego/OneDrive/Escritorio/EL7401_Project_1/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/Project_1_EL7401.dir/includes_CXX.rsp -g -std=gnu++23 -o CMakeFiles\\Project_1_EL7401.dir\\src\\data_manager.cpp.obj -c C:\\Users\\diego\\OneDrive\\Escritorio\\EL7401_Project_1\\src\\data_manager.cpp",
+  "file": "C:/Users/diego/OneDrive/Escritorio/EL7401_Project_1/src/data_manager.cpp",
+  "output": "CMakeFiles/Project_1_EL7401.dir/src/data_manager.cpp.obj"
 },
 {
-  "directory": "/home/borjo/EL7401_Project_1/build",
-  "command": "/usr/bin/g++  -I/home/borjo/EL7401_Project_1/include -g -std=gnu++23 -o CMakeFiles/Project_1_EL7401.dir/src/eye_diagram.cpp.o -c /home/borjo/EL7401_Project_1/src/eye_diagram.cpp",
-  "file": "/home/borjo/EL7401_Project_1/src/eye_diagram.cpp"
+  "directory": "C:/Users/diego/OneDrive/Escritorio/EL7401_Project_1/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/Project_1_EL7401.dir/includes_CXX.rsp -g -std=gnu++23 -o CMakeFiles\\Project_1_EL7401.dir\\src\\eye_diagram.cpp.obj -c C:\\Users\\diego\\OneDrive\\Escritorio\\EL7401_Project_1\\src\\eye_diagram.cpp",
+  "file": "C:/Users/diego/OneDrive/Escritorio/EL7401_Project_1/src/eye_diagram.cpp",
+  "output": "CMakeFiles/Project_1_EL7401.dir/src/eye_diagram.cpp.obj"
 },
 {
-  "directory": "/home/borjo/EL7401_Project_1/build",
-  "command": "/usr/bin/g++  -I/home/borjo/EL7401_Project_1/include -g -std=gnu++23 -o CMakeFiles/Project_1_EL7401.dir/src/fft.cpp.o -c /home/borjo/EL7401_Project_1/src/fft.cpp",
-  "file": "/home/borjo/EL7401_Project_1/src/fft.cpp"
+  "directory": "C:/Users/diego/OneDrive/Escritorio/EL7401_Project_1/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/Project_1_EL7401.dir/includes_CXX.rsp -g -std=gnu++23 -o CMakeFiles\\Project_1_EL7401.dir\\src\\fft.cpp.obj -c C:\\Users\\diego\\OneDrive\\Escritorio\\EL7401_Project_1\\src\\fft.cpp",
+  "file": "C:/Users/diego/OneDrive/Escritorio/EL7401_Project_1/src/fft.cpp",
+  "output": "CMakeFiles/Project_1_EL7401.dir/src/fft.cpp.obj"
 },
 {
-  "directory": "/home/borjo/EL7401_Project_1/build",
-  "command": "/usr/bin/g++  -I/home/borjo/EL7401_Project_1/include -g -std=gnu++23 -o CMakeFiles/Project_1_EL7401.dir/src/impulses.cpp.o -c /home/borjo/EL7401_Project_1/src/impulses.cpp",
-  "file": "/home/borjo/EL7401_Project_1/src/impulses.cpp"
+  "directory": "C:/Users/diego/OneDrive/Escritorio/EL7401_Project_1/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/Project_1_EL7401.dir/includes_CXX.rsp -g -std=gnu++23 -o CMakeFiles\\Project_1_EL7401.dir\\src\\impulses.cpp.obj -c C:\\Users\\diego\\OneDrive\\Escritorio\\EL7401_Project_1\\src\\impulses.cpp",
+  "file": "C:/Users/diego/OneDrive/Escritorio/EL7401_Project_1/src/impulses.cpp",
+  "output": "CMakeFiles/Project_1_EL7401.dir/src/impulses.cpp.obj"
 },
 {
-  "directory": "/home/borjo/EL7401_Project_1/build",
-  "command": "/usr/bin/g++  -I/home/borjo/EL7401_Project_1/include -g -std=gnu++23 -o CMakeFiles/Project_1_EL7401.dir/src/questions.cpp.o -c /home/borjo/EL7401_Project_1/src/questions.cpp",
-  "file": "/home/borjo/EL7401_Project_1/src/questions.cpp"
+  "directory": "C:/Users/diego/OneDrive/Escritorio/EL7401_Project_1/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/Project_1_EL7401.dir/includes_CXX.rsp -g -std=gnu++23 -o CMakeFiles\\Project_1_EL7401.dir\\src\\questions.cpp.obj -c C:\\Users\\diego\\OneDrive\\Escritorio\\EL7401_Project_1\\src\\questions.cpp",
+  "file": "C:/Users/diego/OneDrive/Escritorio/EL7401_Project_1/src/questions.cpp",
+  "output": "CMakeFiles/Project_1_EL7401.dir/src/questions.cpp.obj"
 }
 ]
