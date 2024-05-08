@@ -3,6 +3,7 @@
 
 # RESULTS
 results/*
+plots/*
 
 # Prerequisites
 *.d
